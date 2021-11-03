@@ -9,6 +9,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { InicioSesionComponent } from './components/inicio-sesion/inicio-sesion.component';
 import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ContenedorComerciosComponent } from './components/contenedor-comercios/contenedor-comercios.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     LandingPageComponent,
     InicioSesionComponent,
     BarraLateralComponent,
-    DashboardComponent
+    DashboardComponent,
+    ContenedorComerciosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

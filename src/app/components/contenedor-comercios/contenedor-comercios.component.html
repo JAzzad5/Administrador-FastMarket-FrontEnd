@@ -1,0 +1,23 @@
+<h2 class="titulo">Comercios Afiliados</h2>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre Comercio</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Horario</th>
+            <th scope="col">Costo Envio</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comercio of Comercios">
+            <th scope="row">{{comercio._id}}</th>
+            <td>{{comercio.NombreComercio}}</td>
+            <td>{{comercio.Direccion}}</td>
+            <td>{{comercio.Horario}}</td>
+            <td class="pl-4">L. {{comercio.CostoEnvio}}</td>
+            <td> <p class="estado-a">Activo </p></td>
+        </tr>
+    </tbody>
+</table>
