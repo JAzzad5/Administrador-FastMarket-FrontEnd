@@ -6,7 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-ver ="usuarios"
+  ver ="comercios";
+  cat ="";
+  id ="";
   constructor() { }
 
   ngOnInit(): void {
@@ -17,5 +19,14 @@ ver ="usuarios"
 
   verUsuarios(e:any){
     this.ver=e;
+  }
+
+  verProductos(e:any){
+    this.ver=e;
+  }
+
+  cargarProductos(e:any){
+    this.cat = e.cat;
+    this.id = e.id;
   }
 }

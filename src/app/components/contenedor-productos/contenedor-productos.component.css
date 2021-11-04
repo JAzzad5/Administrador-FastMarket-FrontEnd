@@ -1,0 +1,27 @@
+.titulo{
+    color: #688E26;
+    margin-bottom: 50px;
+}
+
+th{
+    color: #688E26;
+}
+table td{
+    font-size: 18px;
+    vertical-align: middle!important;
+}
+
+.estado-a{
+    width: fit-content;
+    padding: 2px;
+    background-color: #28a745;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
+
+.comercios:hover{
+    background-color: #E1FFAE ;
+    cursor: pointer;
+}

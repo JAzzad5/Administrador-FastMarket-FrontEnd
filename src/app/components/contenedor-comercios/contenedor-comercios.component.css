@@ -20,3 +20,8 @@ table td{
     padding-right: 10px;
     border-radius: 5px;
 }
+
+.comercios:hover{
+    background-color: #E1FFAE ;
+    cursor: pointer;
+}

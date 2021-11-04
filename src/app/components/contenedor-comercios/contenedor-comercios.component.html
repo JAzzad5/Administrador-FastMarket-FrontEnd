@@ -11,7 +11,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let comercio of Comercios">
+        <tr  class="comercios" *ngFor="let comercio of Comercios" (click)="verProductos('Restaurantes', comercio._id)">
             <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{comercio.ImagenComercio}}" alt=""> </th>
             <td>{{comercio.NombreComercio}}</td>
             <td>{{comercio.Direccion}}</td>

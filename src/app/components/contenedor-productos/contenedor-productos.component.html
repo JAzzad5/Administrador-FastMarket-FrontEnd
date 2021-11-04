@@ -1,1 +1,21 @@
-<p>contenedor-productos works!</p>
+<h2 class="titulo">Comercios Afiliados</h2>
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Imagen Producto</th>
+            <th scope="col">Nombre Producto</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of Productos">
+            <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/productos/{{producto.ImagenProducto}}" alt=""> </th>
+            <td>{{producto.NombreProducto}}</td>
+            <td>{{producto.Descripcion}}</td>
+            <td>{{producto.Precio}}</td>
+            <td> <p class="estado-a">Activo </p></td>
+        </tr>
+    </tbody>
+</table>
