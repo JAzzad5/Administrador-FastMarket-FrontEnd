@@ -11,6 +11,10 @@ import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ContenedorComerciosComponent } from './components/contenedor-comercios/contenedor-comercios.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ContenedorUsuariosComponent } from './components/contenedor-usuarios/contenedor-usuarios.component';
+import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
+import { ContenedorProductosComponent } from './components/contenedor-productos/contenedor-productos.component';
+import { ContenedorHistorialOrdenesComponent } from './components/contenedor-historial-ordenes/contenedor-historial-ordenes.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     InicioSesionComponent,
     BarraLateralComponent,
     DashboardComponent,
-    ContenedorComerciosComponent
+    ContenedorComerciosComponent,
+    ContenedorUsuariosComponent,
+    BarraSuperiorComponent,
+    ContenedorProductosComponent,
+    ContenedorHistorialOrdenesComponent
   ],
   imports: [
     BrowserModule,

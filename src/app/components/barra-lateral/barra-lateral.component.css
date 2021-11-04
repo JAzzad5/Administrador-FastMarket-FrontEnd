@@ -3,6 +3,7 @@
     width: 100%;
     border-right: 0.5px solid #E5E5E5;
     padding-right: 15px ;
+    padding-left: 15px;
     display: flex;
     flex-direction: column;
 }
@@ -36,12 +37,13 @@
 }
 
 .opciones p{
-    font-size: 18px;
-    font-weight: 300;
+    font-size: 20px;
+    font-weight: 500;
     padding-left: 10px;
     border-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .opciones p:hover{
@@ -71,6 +73,7 @@
     border-right: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
+    cursor: pointer;
 }
 
 .acciones p:hover{
@@ -102,3 +105,4 @@
     color: #688E26;
     letter-spacing: 3px;
 }
+

@@ -6,6 +6,10 @@
 th{
     color: #688E26;
 }
+table td{
+    font-size: 18px;
+    vertical-align: middle!important;
+}
 
 .estado-a{
     width: fit-content;

@@ -1,0 +1,29 @@
+<h2 class="titulo">Usuarios Afiliados</h2>
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Imagen Usuario</th>
+            <th scope="col">Nombre Usuario</th>
+            <th scope="col">Correo Electrónico</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Direccion</th>
+            <th scope="col">Historial de Ordenes</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let usuario of Usuarios">
+            <th scope="row">
+                <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/fotos perfil/{{usuario.ImagenUsuario}}" alt="">
+            </th>
+            <td>{{usuario.NombreUsuario}}</td>
+            <td>{{usuario.Correo}}</td>
+            <td>{{usuario.Telefono}}</td>
+            <td>{{usuario.Ubicacion.NombreUbicacion}}</td>
+            <td class="pl-4">{{usuario.HistorialOrdenes.length}}</td>
+            <td> <p class="estado-a">{{usuario.Estado}}</p></td>
+            <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+        </tr>
+    </tbody>
+</table>

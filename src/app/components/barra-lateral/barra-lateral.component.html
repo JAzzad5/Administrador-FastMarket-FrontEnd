@@ -4,17 +4,14 @@
         <p>Super Admin.</p>
     </div>
     <div class="opciones">
-        <p> Dashboard</p>
-        <p> Comercios</p>
-        <p> Motoristas</p>
-        <p> Usuarios</p>
+        <p> <fa-icon class=" mr-2" [icon]="faChartPie"></fa-icon> Dashboard</p>
+        <p  (click)="verComercios()"> <fa-icon class=" mr-2" [icon]="faStore"></fa-icon> Comercios</p>
+        <p> <fa-icon class=" mr-2" [icon]="faMotorcycle"></fa-icon> Motoristas</p>
+        <p (click)="verUsuarios()"> <fa-icon class=" mr-2" [icon]="faUser"></fa-icon> Usuarios</p>
+        <p > <fa-icon class=" mr-2" [icon]="faClock"></fa-icon> Ordenes Pendientes</p>
+        <p > <fa-icon class=" mr-2" [icon]="faHistory"></fa-icon> Historial de Ordenes </p>
     </div>
-    <div class="acciones">
-        <h2>Opciones:</h2>
-        <p>Configuraciones</p>
-        <p>Notificaciones</p>
-        <p>Cerrar Sesión</p>
-    </div>
+    
     <div class="logo">
         <img src="../../../assets/images/LogoFastMarket2.svg" alt="">
         <p>Fast Market</p>

@@ -1,10 +1,14 @@
 <div class="contenedor-principal container-fluid">
     <div class="row">
         <div class="lateral col-2">
-            <app-barra-lateral></app-barra-lateral>
+            <app-barra-lateral (onVerComercios)="verComercios($event)" (onVerUsuarios)="verUsuarios($event)" ></app-barra-lateral>
         </div>
-        <div class="dashboard col-10">
-            <app-contenedor-comercios></app-contenedor-comercios>
+        <div class="col-10">
+            <app-barra-superior></app-barra-superior>
+            <div class="dashboard">
+            <app-contenedor-comercios *ngIf="ver=='comercios' "></app-contenedor-comercios>
+            <app-contenedor-usuarios  *ngIf="ver=='usuarios' "></app-contenedor-usuarios>
+            </div>
         </div>
     </div>
 </div>

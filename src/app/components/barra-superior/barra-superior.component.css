@@ -1,0 +1,51 @@
+.navbar{
+    padding: 0px;
+    background-color: white!important;
+    color: #688E26;
+    height: 50px;
+}
+
+.usuario{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: auto;
+    padding-top: 15px;
+    padding-bottom: 7px;
+    margin-right: 50px;
+}
+
+.usuario img{
+    height: 50px;
+    margin-left: 15px;
+
+}
+
+.btn-outline-primary{
+    border-color: #688E26;
+    color: #688E26;
+    font-size: 18px;
+}
+
+.btn-outline-primary:active{
+    background-color: #688E26!important;
+    border-color: #688E26!important;
+    color: white;
+    font-size: 18px;
+}
+
+.btn-outline-primary.focus, .btn-outline-primary:focus, .btn:focus, .btn.focus {
+    box-shadow: 0 0 0 0.2rem #688e2638!important
+}
+
+.btn-outline-primary:hover{
+    background-color: #688E26;
+    color: white;
+    font-size: 18px;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled).active, .btn-outline-primary:not(:disabled):not(.disabled):active, .show>.btn-outline-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #688E26;
+    border-color: #688E26;
+}
