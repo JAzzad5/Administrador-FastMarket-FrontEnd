@@ -25,3 +25,37 @@ table td{
     background-color: #E1FFAE ;
     cursor: pointer;
 }
+
+.perfil-comercio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.perfil-comercio img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.perfil-comercio .nombre{
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.perfil-comercio .direccion{
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.titulo fa-icon{
+    cursor: pointer;
+}

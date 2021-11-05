@@ -8,7 +8,7 @@
             <div class="dashboard">
             <app-contenedor-comercios (onVerProductos)="verProductos($event)"  (onCargarProductos)="cargarProductos($event)" *ngIf="ver=='comercios' "></app-contenedor-comercios>
             <app-contenedor-usuarios  *ngIf="ver=='usuarios' "></app-contenedor-usuarios>
-            <app-contenedor-productos [categoria]="cat" [idComercio]="id"  *ngIf="ver=='productos' "></app-contenedor-productos>
+            <app-contenedor-productos (onVerComercios)="verComercios($event)" [categoria]="cat" [idComercio]="id"  *ngIf="ver=='productos' "></app-contenedor-productos>
             </div>
         </div>
     </div>

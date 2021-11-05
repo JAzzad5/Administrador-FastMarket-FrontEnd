@@ -1,4 +1,14 @@
-<h2 class="titulo">Comercios Afiliados</h2>
+<h2 class="titulo"> <fa-icon (click)="verComercios()"  [icon]="faArrowLeft"></fa-icon> Productos de {{Comercio.NombreComercio}}</h2>
+<div class="perfil-comercio shadow">
+    <img src="../../../assets/images/{{Comercio.ImagenComercio}}" alt="">
+    <div class="nombre"> {{Comercio.NombreComercio}}
+        <div class="direccion"> {{Comercio.Direccion}}</div>
+    </div>
+    <div class="telefono">Teléfono: <br> 1122-3344</div>
+    <div class="horario">Horario: <br> {{Comercio.Horario}}</div>
+    <div class="envio">Envio: <br> L. {{Comercio.CostoEnvio}}</div>
+
+</div>
 <table class="table table-striped shadow">
     <thead class="thead-dark">
         <tr>
