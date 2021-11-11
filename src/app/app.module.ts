@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ContenedorUsuariosComponent } from './components/contenedor-usuarios/contenedor-usuarios.component';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { ContenedorProductosComponent } from './components/contenedor-productos/contenedor-productos.component';
-import { ContenedorHistorialOrdenesComponent } from './components/contenedor-historial-ordenes/contenedor-historial-ordenes.component';
 import { ContenedorHistorialComponent } from './components/contenedor-historial/contenedor-historial.component';
 import { ContenedorOrdenesPendientesComponent } from './components/contenedor-ordenes-pendientes/contenedor-ordenes-pendientes.component';
+import { ContenedorMotoristasComponent } from './components/contenedor-motoristas/contenedor-motoristas.component';
 
 @NgModule({
   declarations: [
@@ -29,9 +29,9 @@ import { ContenedorOrdenesPendientesComponent } from './components/contenedor-or
     ContenedorUsuariosComponent,
     BarraSuperiorComponent,
     ContenedorProductosComponent,
-    ContenedorHistorialOrdenesComponent,
     ContenedorHistorialComponent,
-    ContenedorOrdenesPendientesComponent
+    ContenedorOrdenesPendientesComponent,
+    ContenedorMotoristasComponent
   ],
   imports: [
     BrowserModule,

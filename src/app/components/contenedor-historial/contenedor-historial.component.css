@@ -59,7 +59,9 @@ p.estado-a {
     color: #dc3545;
 }
 
-
+.noTomada{
+    color: #dc3545;
+}
 .orden:hover{
     background-color: #E1FFAE ;
     cursor: pointer;

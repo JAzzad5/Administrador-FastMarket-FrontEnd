@@ -12,6 +12,7 @@ export class BarraLateralComponent implements OnInit {
 @Output() onVerComercios = new EventEmitter();
 @Output() onVerHistorial = new EventEmitter();
 @Output() onVerPendientes = new EventEmitter();
+@Output() onVerMotoristas = new EventEmitter();
 faEdit =faEdit;
 faTrashAlt=faTrashAlt;
 faCashRegister= faCashRegister;
@@ -41,5 +42,9 @@ faClock= faClock;
 
   verPendientes(){
     this.onVerPendientes.emit('pendientes')
+  }
+
+  verMotoristas(){
+    this.onVerMotoristas.emit('motoristas')
   }
 }

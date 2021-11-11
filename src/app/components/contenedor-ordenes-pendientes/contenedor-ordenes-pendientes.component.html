@@ -17,8 +17,10 @@
                 <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{orden.productos[0]._id[0].Comercio[0].ImagenComercio}}" alt="">
             </th>
             <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.usuario[0].NombreUsuario}}</td>
-            <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.motorista}}</td>
-            <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.productos.length}}</td>
+            
+            <td *ngIf="orden.motorista == null" [ngClass]="{'noTomada': orden.motorista == null}">Orden No Tomada.</td>
+            <td *ngIf=" orden.estado == 'Pendiente' && orden.motorista != null" >{{orden.motorista[0].Nombre}}</td>
+            <td style="text-align: center;" *ngIf=" orden.estado == 'Pendiente' " >{{orden.productos.length}}</td>
             <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.fecha}}</td>
             <td *ngIf=" orden.estado == 'Pendiente' " > <p [ngClass]="{'estado-e': orden.estado == 'Entregado', 'estado-p': orden.estado == 'Pendiente', 'estado-c': false}" >{{orden.estado}}</p></td>
             <td *ngIf=" orden.estado == 'Pendiente' " > <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>

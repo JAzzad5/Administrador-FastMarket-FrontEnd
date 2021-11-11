@@ -52,3 +52,7 @@ p.estado-a {
     background-color: #E1FFAE ;
     cursor: pointer;
 }
+
+.noTomada{
+    color: #dc3545;
+}

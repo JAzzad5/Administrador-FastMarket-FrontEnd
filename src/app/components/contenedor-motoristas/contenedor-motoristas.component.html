@@ -1,0 +1,29 @@
+<h2 class="titulo">Motoristas Afiliados</h2>
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Imagen Motoristas</th>
+            <th scope="col">Nombre Motoristas</th>
+            <th scope="col">Correo Electrónico</th>
+            <th scope="col">Telefono</th>
+            <th style="width: 115px;" scope="col">Historial de Ordenes</th>
+            <th scope="col">Observacion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let motorista of Motoristas">
+            <th scope="row">
+                <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/fotos perfil/{{motorista.ImagenMotorista}}" alt="">
+            </th>
+            <td>{{motorista.Nombre}}</td>
+            <td>{{motorista.Correo}}</td>
+            <td>{{motorista.Telefono}}</td>
+            <td style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
+            <td> <p [ngClass]="{'estado-a': motorista.Observacion == 'Activo', 'estado-i': motorista.Observacion == 'Inactivo', 'estado-co':  motorista.Observacion}">{{motorista.Observacion}}</p></td>
+            <td> <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
+            <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+        </tr>
+    </tbody>
+</table>
