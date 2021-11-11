@@ -1,7 +1,7 @@
 <div class="contenedor-principal container-fluid">
     <div class="row">
         <div class="lateral col-2">
-            <app-barra-lateral (onVerComercios)="verComercios($event)" (onVerUsuarios)="verUsuarios($event)" ></app-barra-lateral>
+            <app-barra-lateral (onVerComercios)="verComercios($event)" (onVerUsuarios)="verUsuarios($event)" (onVerHistorial)="verHistorial($event)" (onVerPendientes)="verPendientes($event)"></app-barra-lateral>
         </div>
         <div class="col-10">
             <app-barra-superior></app-barra-superior>
@@ -9,6 +9,9 @@
             <app-contenedor-comercios (onVerProductos)="verProductos($event)"  (onCargarProductos)="cargarProductos($event)" *ngIf="ver=='comercios' "></app-contenedor-comercios>
             <app-contenedor-usuarios  *ngIf="ver=='usuarios' "></app-contenedor-usuarios>
             <app-contenedor-productos (onVerComercios)="verComercios($event)" [categoria]="cat" [idComercio]="id"  *ngIf="ver=='productos' "></app-contenedor-productos>
+            <app-contenedor-historial *ngIf="ver=='historial' "></app-contenedor-historial>
+            <app-contenedor-ordenes-pendientes *ngIf="ver=='pendientes' "></app-contenedor-ordenes-pendientes>
+
             </div>
         </div>
     </div>

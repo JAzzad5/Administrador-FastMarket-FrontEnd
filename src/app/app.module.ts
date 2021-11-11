@@ -15,6 +15,8 @@ import { ContenedorUsuariosComponent } from './components/contenedor-usuarios/co
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { ContenedorProductosComponent } from './components/contenedor-productos/contenedor-productos.component';
 import { ContenedorHistorialOrdenesComponent } from './components/contenedor-historial-ordenes/contenedor-historial-ordenes.component';
+import { ContenedorHistorialComponent } from './components/contenedor-historial/contenedor-historial.component';
+import { ContenedorOrdenesPendientesComponent } from './components/contenedor-ordenes-pendientes/contenedor-ordenes-pendientes.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { ContenedorHistorialOrdenesComponent } from './components/contenedor-his
     ContenedorUsuariosComponent,
     BarraSuperiorComponent,
     ContenedorProductosComponent,
-    ContenedorHistorialOrdenesComponent
+    ContenedorHistorialOrdenesComponent,
+    ContenedorHistorialComponent,
+    ContenedorOrdenesPendientesComponent
   ],
   imports: [
     BrowserModule,

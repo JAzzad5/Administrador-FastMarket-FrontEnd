@@ -24,7 +24,16 @@ export class DashboardComponent implements OnInit {
   verProductos(e:any){
     this.ver=e;
   }
+  
+  
+  verHistorial(e:any){
+    this.ver=e;
+  }
 
+  verPendientes(e:any){
+    this.ver=e;
+  }
+  
   cargarProductos(e:any){
     this.cat = e.cat;
     this.id = e.id;

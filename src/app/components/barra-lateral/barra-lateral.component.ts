@@ -10,6 +10,8 @@ import { faCashRegister, faHistory, faCog, faStore, faChartPie, faMotorcycle, fa
 export class BarraLateralComponent implements OnInit {
 @Output() onVerUsuarios = new EventEmitter();
 @Output() onVerComercios = new EventEmitter();
+@Output() onVerHistorial = new EventEmitter();
+@Output() onVerPendientes = new EventEmitter();
 faEdit =faEdit;
 faTrashAlt=faTrashAlt;
 faCashRegister= faCashRegister;
@@ -31,5 +33,13 @@ faClock= faClock;
 
   verComercios(){
     this.onVerComercios.emit('comercios')
+  }
+
+  verHistorial(){
+    this.onVerHistorial.emit('historial')
+  }
+
+  verPendientes(){
+    this.onVerPendientes.emit('pendientes')
   }
 }
