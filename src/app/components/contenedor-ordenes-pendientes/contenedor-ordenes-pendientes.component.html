@@ -23,7 +23,7 @@
             <td style="text-align: center;" *ngIf=" orden.estado == 'Pendiente' " >{{orden.productos.length}}</td>
             <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.fecha}}</td>
             <td *ngIf=" orden.estado == 'Pendiente' " > <p [ngClass]="{'estado-e': orden.estado == 'Entregado', 'estado-p': orden.estado == 'Pendiente', 'estado-c': false}" >{{orden.estado}}</p></td>
-            <td *ngIf=" orden.estado == 'Pendiente' " > <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+            <td class="no-cursor" *ngIf=" orden.estado == 'Pendiente' " > <fa-icon [ngClass]="{'icon-noTomada': orden.motorista != null, 'iconos edit': orden.motorista == null}" [icon]="faUserPlus"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
     </tbody>
 </table>

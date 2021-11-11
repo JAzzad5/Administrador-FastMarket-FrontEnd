@@ -2,14 +2,17 @@
     <div class="container-fluid">
         <div class="usuario">
             <div ngbDropdown>
-                <button class="btn btn-outline-primary " ngbDropdownToggle>Super Admin</button>
+                <button class="btn btn-outline-primary " ngbDropdownToggle>
+                    <img class="rounded rounded-circle" src="../../../assets/images/fotos perfil/admin.jpg" alt="">
+                    Super Admin
+                </button>
                 <div ngbDropdownMenu>
                     <button ngbDropdownItem>Configuraciones</button>
                     <div class="dropdown-divider"></div>
                     <button [routerLink]="['/inicio-sesion']" routerLinkActive="router-link-active"  ngbDropdownItem>Cerar Sesion</button>
                 </div>
             </div>
-            <img class="rounded rounded-circle" src="../../../assets/images/fotos perfil/admin.jpg" alt="">
+            
         </div>
     </div>
 </nav>

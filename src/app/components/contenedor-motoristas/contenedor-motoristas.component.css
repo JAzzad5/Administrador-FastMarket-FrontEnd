@@ -55,7 +55,7 @@ table td{
 }
 
 .estado-i{
-    width: 105px;
+    width: fit-content;
     height: 35px;
     background-color: #dc3545;
     color: white;
@@ -69,7 +69,7 @@ table td{
 }
 
 .estado-co{
-    width: 105px;
+    width: fit-content;
     height: 35px;
     background-color: #ffc107;
     color: white;

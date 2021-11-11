@@ -21,7 +21,7 @@
             <td>{{motorista.Correo}}</td>
             <td>{{motorista.Telefono}}</td>
             <td style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
-            <td> <p [ngClass]="{'estado-a': motorista.Observacion == 'Activo', 'estado-i': motorista.Observacion == 'Inactivo', 'estado-co':  motorista.Observacion}">{{motorista.Observacion}}</p></td>
+            <td> <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
             <td> <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
             <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
