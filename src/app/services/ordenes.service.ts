@@ -10,10 +10,14 @@ export class OrdenesService {
   constructor(private httpClient:HttpClient) { }
 
   obtenerOrdenesUsuario(IdUsuario:any):Observable<any>{
-    return this.httpClient.get(`http://localhost:8888/ordenes/${IdUsuario}`,{});
+    return this.httpClient.get(`http://localhost:8888/ordenes/usuario/${IdUsuario}`,{});
   };
 
   obtenerOrdenes():Observable<any>{
     return this.httpClient.get(`http://localhost:8888/ordenes/`,{});
+  };
+
+  obtenerOrdenId(Id:any):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/ordenes/${Id}`,{});
   };
 }
