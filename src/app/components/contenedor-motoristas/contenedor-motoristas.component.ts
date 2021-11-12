@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faEdit, faTrashAlt, faUser} from '@fortawesome/free-regular-svg-icons';
-import { faCashRegister, faHistory, faCog, faStore, faChartPie} from '@fortawesome/free-solid-svg-icons';
+import { faCashRegister, faHistory, faCog, faStore, faChartPie, faCheck, faTimes} from '@fortawesome/free-solid-svg-icons';
 import { MotoristasService } from 'src/app/services/motoristas.service';
 
 @Component({
@@ -17,6 +17,8 @@ export class ContenedorMotoristasComponent implements OnInit {
   faStore= faStore;
   faUser= faUser;
   faChartPie= faChartPie;
+  faCheck=faCheck;
+  faTimes=faTimes;
 Motoristas:any = [];
 
   constructor(private motoristasService:MotoristasService) { }

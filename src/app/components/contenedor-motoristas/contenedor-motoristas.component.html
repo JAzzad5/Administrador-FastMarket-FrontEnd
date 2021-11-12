@@ -1,8 +1,8 @@
 <h2 class="titulo">Motoristas Afiliados</h2>
-<table class="table table-striped shadow">
+<table class="table table-striped shadow mb-5">
     <thead class="thead-dark">
         <tr>
-            <th scope="col">Imagen Motoristas</th>
+            <th style="padding-left: 30px;" scope="col">Imagen Motoristas</th>
             <th scope="col">Nombre Motoristas</th>
             <th scope="col">Correo Electrónico</th>
             <th scope="col">Telefono</th>
@@ -14,16 +14,43 @@
     </thead>
     <tbody>
         <tr *ngFor="let motorista of Motoristas">
-            <th scope="row">
+            <th *ngIf="motorista.Aprobado != false" scope="row">
                 <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/fotos perfil/{{motorista.ImagenMotorista}}" alt="">
             </th>
-            <td>{{motorista.Nombre}}</td>
-            <td>{{motorista.Correo}}</td>
-            <td>{{motorista.Telefono}}</td>
-            <td style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
-            <td> <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
-            <td> <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
-            <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+            <td *ngIf="motorista.Aprobado != false" >{{motorista.Nombre}}</td>
+            <td *ngIf="motorista.Aprobado != false" >{{motorista.Correo}}</td>
+            <td *ngIf="motorista.Aprobado != false" >{{motorista.Telefono}}</td>
+            <td *ngIf="motorista.Aprobado != false"  style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
+            <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
+            <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
+            <td *ngIf="motorista.Aprobado != false" > <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
+    </tbody>
+</table>
+
+<h2 class="titulo">Motoristas Pendientes de Aprobación</h2>
+<table class="table table-striped shadow">
+    <thead class="thead-dark">
+        <tr>
+            <th style="padding-left: 30px;" scope="col">Imagen Motoristas</th>
+            <th scope="col">Nombre Motoristas</th>
+            <th scope="col">Correo Electrónico</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Observacion</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Aprobación</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let motorista of Motoristas">
+            <th *ngIf="motorista.Aprobado == false" scope="row">
+                <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/fotos perfil/{{motorista.ImagenMotorista}}" alt="">
+            </th>
+            <td *ngIf="motorista.Aprobado == false">{{motorista.Nombre}}</td>
+            <td *ngIf="motorista.Aprobado == false">{{motorista.Correo}}</td>
+            <td *ngIf="motorista.Aprobado == false">{{motorista.Telefono}}</td>
+            <td *ngIf="motorista.Aprobado == false"> <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
+            <td *ngIf="motorista.Aprobado == false"> <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
+            <td *ngIf="motorista.Aprobado == false"> <fa-icon class="iconos edit" [icon]="faCheck"></fa-icon><fa-icon class="iconos delete" [icon]="faTimes"></fa-icon></td>        </tr>
     </tbody>
 </table>

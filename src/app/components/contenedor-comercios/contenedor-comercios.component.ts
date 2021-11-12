@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CategoriasService } from 'src/app/services/categorias.service';
 import { ComerciosService } from 'src/app/services/comercios.service';
 
 @Component({
@@ -9,14 +10,18 @@ import { ComerciosService } from 'src/app/services/comercios.service';
 export class ContenedorComerciosComponent implements OnInit { 
 @Output() onVerProductos = new EventEmitter();
 @Output() onCargarProductos = new EventEmitter();
-  Comercios:any = [];
-  constructor(private comerciosService:ComerciosService) { }
+  Categorias:any = [];
+  constructor(private categoriasService:CategoriasService) { }
 
   ngOnInit(): void {
-    this.comerciosService.obtenerComercios('Restaurantes').subscribe(
+    
+    this.categoriasService.obtenerCategorias().subscribe(
       res=>{
-        this.Comercios = res[0].Comercios;
-        console.log(this.Comercios);
+        this.Categorias = res;
+        console.log("Categorias: ", this.Categorias);
+      },
+      error=>{
+        console.log(error)
       }
     );
 

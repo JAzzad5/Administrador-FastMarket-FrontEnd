@@ -22,7 +22,7 @@
             <td style="text-align: center;">{{orden.productos.length}}</td>
             <td>{{orden.fecha}}</td>
             <td> <p [ngClass]="{'estado-e': orden.estado == 'Entregado', 'estado-p': orden.estado == 'Pendiente', 'estado-c': false}" >{{orden.estado}}</p></td>
-            <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+            <td class="no-cursor" > <fa-icon [ngClass]="{'icon-noTomada': orden.motorista != null, 'iconos edit': orden.motorista == null}" [icon]="faUserPlus"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
     </tbody>
 </table>

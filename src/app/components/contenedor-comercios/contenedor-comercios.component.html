@@ -1,23 +1,30 @@
 <h2 class="titulo">Comercios Afiliados</h2>
-<table class="table table-striped shadow">
-    <thead class="thead-dark">
-        <tr>
-            <th scope="col">Imagen Comercio</th>
-            <th scope="col">Nombre Comercio</th>
-            <th scope="col">Direccion</th>
-            <th scope="col">Horario</th>
-            <th scope="col">Costo Envio</th>
-            <th scope="col">Estado</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr  class="comercios" *ngFor="let comercio of Comercios" (click)="verProductos('Restaurantes', comercio._id)">
-            <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{comercio.ImagenComercio}}" alt=""> </th>
-            <td>{{comercio.NombreComercio}}</td>
-            <td>{{comercio.Direccion}}</td>
-            <td>{{comercio.Horario}}</td>
-            <td class="pl-4">L. {{comercio.CostoEnvio}}</td>
-            <td> <p class="estado-a">Activo </p></td>
-        </tr>
-    </tbody>
-</table>
+<div class="categorias" *ngFor="let categoria of Categorias">
+    <div class="ver" *ngIf="categoria.Comercios.length!=0">
+        <h2 class="titulo-categoria">{{categoria.NombreCategoria}}</h2>
+        <table class="table table-striped shadow">
+            <thead class="thead-dark">
+                <tr>
+                    <th style="padding-left: 30px;"  scope="col">Imagen Comercio</th>
+                    <th scope="col">Nombre Comercio</th>
+                    <th scope="col">Direccion</th>
+                    <th scope="col">Cant. Productos</th>
+                    <th scope="col">Horario</th>
+                    <th scope="col">Costo Envio</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  class="comercios" *ngFor="let comercio of categoria.Comercios" (click)="verProductos(categoria.NombreCategoria, comercio._id)">
+                    <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{comercio.ImagenComercio}}" alt=""> </th>
+                    <td>{{comercio.NombreComercio}}</td>
+                    <td style="width: 355px;" >{{comercio.Direccion}}</td>
+                    <td style="padding-left: 30px;">{{comercio.Productos.length}}</td>
+                    <td style="width: 190px;" >{{comercio.Horario}}</td>
+                    <td class="pl-4">L. {{comercio.CostoEnvio}}</td>
+                    <td> <p class="estado-a">Activo </p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

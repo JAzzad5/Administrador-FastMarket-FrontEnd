@@ -66,3 +66,19 @@ p.estado-a {
     background-color: #E1FFAE ;
     cursor: pointer;
 }
+
+
+.noTomada{
+    color: #dc3545;
+}
+
+.icon-noTomada{
+    font-size: 22px;
+    margin-left: 10px;
+    color: gray;
+    cursor: default;
+}
+
+.no-cursor{
+    cursor:  default;
+}

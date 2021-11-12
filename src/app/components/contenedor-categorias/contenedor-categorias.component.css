@@ -1,6 +1,7 @@
 .contenedor-categorias{
-    padding-left: 50px;
-    padding-right: 50px;
+    padding-top: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
 }
 .titulo{
     color: #688E26;
@@ -10,7 +11,6 @@
 th{
     color: #688E26;
 }
-
 table td{
     font-size: 18px;
     vertical-align: middle!important;
@@ -18,20 +18,19 @@ table td{
 
 .estado-a{
     width: fit-content;
+    padding: 2px;
     background-color: #28a745;
     color: white;
-    font-size: 16px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-radius: 5px;
 }
 
-p.estado-a {
-    margin-right: 0px;
-    margin-bottom: 0px;
+.comercios:hover{
+    background-color: #E1FFAE ;
+    cursor: pointer;
 }
+
 
 .iconos{
     font-size: 22px;

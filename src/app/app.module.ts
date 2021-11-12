@@ -17,6 +17,7 @@ import { ContenedorProductosComponent } from './components/contenedor-productos/
 import { ContenedorHistorialComponent } from './components/contenedor-historial/contenedor-historial.component';
 import { ContenedorOrdenesPendientesComponent } from './components/contenedor-ordenes-pendientes/contenedor-ordenes-pendientes.component';
 import { ContenedorMotoristasComponent } from './components/contenedor-motoristas/contenedor-motoristas.component';
+import { ContenedorCategoriasComponent } from './components/contenedor-categorias/contenedor-categorias.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ContenedorMotoristasComponent } from './components/contenedor-motorista
     ContenedorProductosComponent,
     ContenedorHistorialComponent,
     ContenedorOrdenesPendientesComponent,
-    ContenedorMotoristasComponent
+    ContenedorMotoristasComponent,
+    ContenedorCategoriasComponent
   ],
   imports: [
     BrowserModule,

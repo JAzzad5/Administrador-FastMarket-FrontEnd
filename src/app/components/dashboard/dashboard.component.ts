@@ -37,6 +37,10 @@ export class DashboardComponent implements OnInit {
   verMotoristas(e:any){
     this.ver=e;
   }
+
+  verCategorias(e:any){
+    this.ver=e;
+  }
   
   cargarProductos(e:any){
     this.cat = e.cat;

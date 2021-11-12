@@ -1,0 +1,24 @@
+<div class="contenedor-categorias">
+    <h2 class="titulo">Categorias</h2>
+    <table class="table table-striped shadow">
+        <thead class="thead-dark">
+            <tr>
+                <th style="text-align: center;"  scope="col">Imagen Categoria</th>
+                <th scope="col">Nombre Categoria</th>
+                <th scope="col"># de Comercios</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  class="comercios" *ngFor="let categoria of categorias">
+                <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{categoria.ImagenCategoria}}" alt=""> </th>
+                <td style="font-weight: bold;" >{{categoria.NombreCategoria}}</td>
+                <td style="padding-left: 30px;" >{{categoria.Comercios.length}}</td>
+                <td> <p class="estado-a">Activo </p></td>
+                <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+        
+            </tr>
+        </tbody>
+    </table>
+</div>
