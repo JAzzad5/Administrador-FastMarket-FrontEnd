@@ -250,11 +250,27 @@ p.estado-a {
 }
 
 .titulo-orden{
-    color: #F9A512;
+    color: rgb(63, 63, 63);
     margin-bottom: 10px;
     font-size: 22px;
     font-weight: bold;
     margin-right: auto;
     margin-left: 30px;
     text-decoration: underline;
+}
+.contenedor-ubicacion{
+    width: 90%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mapa{
+    background-color: white;
+    width: 95%;
+    height: 100%;
+    border-radius: 20px;
 }

@@ -3,7 +3,9 @@ import { OrdenesService } from 'src/app/services/ordenes.service';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt, faEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ThrowStmt } from '@angular/compiler';
+import { environment } from 'src/environments/environment';
+import { style } from '@angular/animations';
+declare const L: any;
 
 @Component({
   selector: 'app-contenedor-ordenes-pendientes',
@@ -15,6 +17,11 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
   faTrashAlt=faTrashAlt;
   faEdit=faEdit;
   faUserPlus=faUserPlus;
+  zoom:any = 10;
+  mymap:any="";
+  marker:any ="";
+  lat:any;
+  lon:any;
   constructor(private modalService:NgbModal, private ordenesService: OrdenesService) { }
   ordenes:any;
   OrdenPendiente:any = [];
@@ -36,19 +43,24 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
       res=>{
         this.OrdenPendiente = res;
         console.log(this.OrdenPendiente[0]);
+        this.lat = this.OrdenPendiente[0].usuario[0].Ubicacion.lat; 
+        this.lon = this.OrdenPendiente[0].usuario[0].Ubicacion.lon;
         this.totalOrden();
+
+        this.modalService.open(
+          modal,
+          {
+            size:'xs',
+            centered:true
+          }
+        );
+        this.verMapa();
+        this.trazarRuta(this.OrdenPendiente[0].productos[0]._id[0].Comercio[0].Ubicacion.lat, this.OrdenPendiente[0].productos[0]._id[0].Comercio[0].Ubicacion.lon)
       },
       error=>{
         console.log(error);
       }
     )
-    this.modalService.open(
-      modal,
-      {
-        size:'xs',
-        centered:true
-      }
-    );
 
   }
 
@@ -62,4 +74,37 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
     });
   }
 
+  verMapa(){
+
+        this.mymap = L.map('mapa').setView([this.lat, this.lon], this.zoom);
+          L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${environment.leafletToken}`, {
+          maxZoom: 18,
+          id: 'mapbox/streets-v11',
+          tileSize: 512,
+          zoomOffset: -1,
+          accessToken: environment.leafletToken
+        }).addTo(this.mymap);
+
+        this.aggMarcador(this.lat, this.lon);
+  }
+
+  
+  aggMarcador(lat:any, long:any){
+    this.marker = L.marker([lat,long]).addTo(this.mymap);
+    this.marker.bindPopup("<b>Ubicación Usuario </b>").openPopup();
+    this.lat = lat;
+    this.lon = long;
+  }
+
+  trazarRuta(latComercio:any, lonComercio:any){
+    L.Routing.control({
+      waypoints: [
+        L.latLng(this.lat, this.lon),
+        L.latLng(latComercio, lonComercio)
+      ],
+      lineOptions: {
+        styles: [{color: '#688E26', opacity: 0.7, weight: 4}]
+      }
+    }).addTo(this.mymap);
+  }
 }

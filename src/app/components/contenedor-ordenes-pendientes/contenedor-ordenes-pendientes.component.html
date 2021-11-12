@@ -1,4 +1,4 @@
-<h2 class="titulo">Historial de Ordenes</h2>
+<h2 class="titulo">Ordenes Pendientes</h2>
 <table class="table table-striped shadow">
     <thead class="thead-dark">
         <tr>
@@ -29,8 +29,6 @@
 </table>
 
 
-
-
 <!-- Ventana modal de carrito de compras -->
 <ng-template #Orden let-modal>
     <div class="modal-header">
@@ -39,7 +37,7 @@
         <span aria-hidden="true">&times;</span>
     </button>
     </div>
-    <div *ngIf="OrdenPendiente.length != 0" class="modal-body">
+    <div class="modal-body">
         <div class="contenedor-orden">
             <div class="titulo-orden"> Usuario: </div>
             <div class=" shadow-sm datos-usuario">
@@ -50,6 +48,10 @@
                 <label >{{OrdenPendiente[0].usuario[0].Ubicacion.NombreUbicacion}}</label>
                 <label >{{OrdenPendiente[0].usuario[0].Telefono}}</label>
                 </div>
+            </div>
+            <div class="titulo-orden"> Ubicación del Usuario: </div>
+            <div class="contenedor-ubicacion">
+                <div id="mapa" class="mapa shadow"></div>
             </div>
             <div class="titulo-orden"> Productos de la Orden: </div>
             <div class="producto shadow" *ngFor="let producto of OrdenPendiente[0].productos">
