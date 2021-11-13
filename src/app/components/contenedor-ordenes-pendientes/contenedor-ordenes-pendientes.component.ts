@@ -4,7 +4,6 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt, faEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
-import { style } from '@angular/animations';
 declare const L: any;
 
 @Component({
