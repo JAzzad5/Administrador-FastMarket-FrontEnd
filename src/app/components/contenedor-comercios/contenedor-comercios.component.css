@@ -6,6 +6,21 @@
 .titulo-categoria{
     color: #FAA613;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.agg-comercio{
+    margin-right: 30px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
 }
 
 th{
@@ -14,6 +29,10 @@ th{
 table td{
     font-size: 18px;
     vertical-align: middle!important;
+}
+
+.ver{
+    margin-bottom: 40px;
 }
 
 .estado-a{

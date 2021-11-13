@@ -1,7 +1,11 @@
 <h2 class="titulo">Comercios Afiliados</h2>
 <div class="categorias" *ngFor="let categoria of Categorias">
     <div class="ver" *ngIf="categoria.Comercios.length!=0">
-        <h2 class="titulo-categoria">{{categoria.NombreCategoria}}</h2>
+        <h2 class="titulo-categoria">{{categoria.NombreCategoria}}
+            <div (click)="aggComercio(Comercio, categoria.NombreCategoria)" class="agg-comercio">
+                Añadir Comercio <fa-icon class="ml-1" [icon]="faPlus"></fa-icon>
+            </div>
+        </h2>
         <table class="table table-striped shadow">
             <thead class="thead-dark">
                 <tr>
@@ -28,3 +32,32 @@
         </table>
     </div>
 </div>
+
+
+
+
+
+<!-- Ventana modal de agg comercio -->
+<ng-template #Comercio let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Datos del Comercio</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body" >
+        <form [formGroup]="formularioComercio">
+            Nombre Comercio: <input class="form-control" formControlName="NombreComercio" type="text" placeholder="Nombre Comercio" required><br>
+            Imagen Comercio: <input class="form-control" formControlName="ImagenComercio" type="file" placeholder="Imagen Comercio"><br>
+            Banner Comercio: <input class="form-control" formControlName="BannerComercio" type="file" placeholder="Banner Comercio"><br>
+            Calificacion: <input min="0" max="5" class="form-control" formControlName="Calificacion" type="number" placeholder="Calificacion 0-5"><br>
+            Direccion: <input class="form-control" formControlName="Direccion" type="text" placeholder="Direccion"><br>
+            Costo Envio: <input min="25" max="60" class="form-control" formControlName="CostoEnvio" type="number" placeholder="Costo Envio (mayor que L. 25)"><br>
+            Hora Apertura: <input class="form-control" formControlName="HoraInicio" type="time" placeholder="Horario"><br>
+            Hora Cierre: <input class="form-control" formControlName="HoraFinal" type="time" placeholder="Horario"><br>
+        </form>
+    </div>
+    <div class="modal-footer container ">
+        <button [disabled]="!formularioComercio.valid" type="button" (click)="guardar()" type="button" class="btn btn-success col-12" (click)="modal.close('Save click');">Agregar Comercio </button>
+    </div>
+</ng-template>

@@ -11,6 +11,7 @@ import { BarraLateralComponent } from './components/barra-lateral/barra-lateral.
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ContenedorComerciosComponent } from './components/contenedor-comercios/contenedor-comercios.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ContenedorUsuariosComponent } from './components/contenedor-usuarios/contenedor-usuarios.component';
 import { BarraSuperiorComponent } from './components/barra-superior/barra-superior.component';
 import { ContenedorProductosComponent } from './components/contenedor-productos/contenedor-productos.component';
@@ -40,7 +41,8 @@ import { ContenedorCategoriasComponent } from './components/contenedor-categoria
     AppRoutingModule,
     NgbModule,
     FontAwesomeModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
