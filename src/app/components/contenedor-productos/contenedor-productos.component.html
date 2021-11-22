@@ -7,6 +7,9 @@
     <div class="telefono">Teléfono: <br> 1122-3344</div>
     <div class="horario">Horario: <br> {{Comercio.Horario}}</div>
     <div class="envio">Envio: <br> L. {{Comercio.CostoEnvio}}</div>
+    <div (click)="aggProducto(Producto)" class="agg-producto">
+        Añadir Producto <fa-icon class="ml-1" [icon]="faPlus"></fa-icon>
+    </div>
 
 </div>
 <table class="table table-striped shadow">
@@ -29,3 +32,28 @@
         </tr>
     </tbody>
 </table>
+
+
+
+
+<!-- Ventana modal de agg prodcuto -->
+<ng-template #Producto let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Datos del Producto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body" >
+        <form [formGroup]="formularioProducto">
+            Nombre Producto: <input class="form-control" formControlName="NombreProducto" type="text" placeholder="Nombre Producto" required><br>
+            Imagen Producto: <input class="form-control" formControlName="ImagenProducto" type="file" placeholder="Imagen Producto"><br>
+            Descripcion: <input class="form-control" formControlName="Descripcion" type="text" placeholder="Descripcion del Producto"><br>
+            Precio: <input min="10" class="form-control" formControlName="Precio" type="number" placeholder="Precio (mayor que L. 10)"><br>
+            
+        </form>
+    </div>
+    <div class="modal-footer container ">
+        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="modal.close('Save click');">Agregar Comercio </button>
+    </div>
+</ng-template>

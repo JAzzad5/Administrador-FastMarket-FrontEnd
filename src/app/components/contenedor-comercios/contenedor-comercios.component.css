@@ -49,3 +49,9 @@ table td{
     background-color: #E1FFAE ;
     cursor: pointer;
 }
+
+
+.categorias{
+    height: fit-content;
+    padding-bottom: 10px;
+}

@@ -1,7 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { ProductosService } from 'src/app/services/productos.service';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-contenedor-productos',
@@ -15,8 +17,18 @@ export class ContenedorProductosComponent implements OnInit {
 Productos:any = [];
 Comercio:any =[];
 faArrowLeft=faArrowLeft;
+faPlus=faPlus;
 
-  constructor(private productosService: ProductosService, private comerciosService:ComerciosService) { }
+formularioProducto = new FormGroup({
+  NombreProducto:new FormControl('', [Validators.required, Validators.maxLength(20)]),
+  ImagenProducto:new FormControl('', [Validators.required]),
+  Descripcion :new FormControl('', [Validators.required, Validators.maxLength(50) ]),
+  Precio:new FormControl('', [Validators.required,  Validators.min(10)]),
+});
+
+
+
+  constructor(private productosService: ProductosService, private comerciosService:ComerciosService, private modalService:NgbModal) { }
 
   ngOnInit(): void {
     this.productosService.obteneProductos( this.idComercio).subscribe(
@@ -45,4 +57,14 @@ faArrowLeft=faArrowLeft;
     this.onVerComercios.emit('comercios')
   }
 
+  aggProducto(modal:any){
+
+    this.modalService.open(
+      modal,
+      {
+        size:'xs',
+        centered:true
+      }
+    );
+  }
 }

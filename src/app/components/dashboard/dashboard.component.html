@@ -1,7 +1,11 @@
 <div class="contenedor-principal container-fluid">
     <div class="row">
         <div class="lateral col-2">
-            <app-barra-lateral (onVerComercios)="verComercios($event)" (onVerUsuarios)="verUsuarios($event)" (onVerHistorial)="verHistorial($event)" (onVerPendientes)="verPendientes($event)" (onVerCategorias)="verCategorias($event)" (onVerMotoristas)="verMotoristas($event)"></app-barra-lateral>
+            <app-barra-lateral style="position: fixed; overflow: hidden; z-index: 10;"
+                (onVerComercios)="verComercios($event)" (onVerUsuarios)="verUsuarios($event)"
+                (onVerHistorial)="verHistorial($event)" (onVerPendientes)="verPendientes($event)" 
+                (onVerCategorias)="verCategorias($event)" (onVerMotoristas)="verMotoristas($event)">
+            </app-barra-lateral>
         </div>
         <div class="col-10">
             <app-barra-superior></app-barra-superior>
