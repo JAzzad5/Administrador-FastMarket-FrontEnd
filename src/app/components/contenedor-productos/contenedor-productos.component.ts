@@ -19,9 +19,9 @@ faArrowLeft=faArrowLeft;
   constructor(private productosService: ProductosService, private comerciosService:ComerciosService) { }
 
   ngOnInit(): void {
-    this.productosService.obteneProductos(this.categoria, this.idComercio).subscribe(
+    this.productosService.obteneProductos( this.idComercio).subscribe(
       res=>{
-        this.Productos = res;
+        this.Productos = res.Productos;
         console.log(res);
       },
       error=>{
@@ -29,10 +29,10 @@ faArrowLeft=faArrowLeft;
       }
     );
 
-    this.comerciosService.obtenerUnComercio(this.categoria, this.idComercio).subscribe(
+    this.comerciosService.obtenerUnComercio(this.idComercio).subscribe(
       res=>{
         console.log(res);
-        this.Comercio=res.Comercios[0];
+        this.Comercio=res;
       },
       error=>{
 

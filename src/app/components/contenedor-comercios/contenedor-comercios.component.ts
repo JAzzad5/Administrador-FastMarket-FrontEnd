@@ -62,6 +62,7 @@ export class ContenedorComerciosComponent implements OnInit {
     this.onCargarProductos.emit({cat : categoria, id: idComercio});
 
   }
+  
   aggComercio(modal:any, categoria:any){
     console.log(categoria);
     this.categoria = categoria;
@@ -83,10 +84,19 @@ export class ContenedorComerciosComponent implements OnInit {
     console.log('Formulario:' , this.formularioComercio.value);
     console.log('Categoria:' , this.categoria);
 
-    this.comerciosService.agregarComercio(this.categoria, this.formularioComercio.value).subscribe(
+    // crear un nuevo comercio y luego añadirlo a su categoria
+    //creando el comercio
+    this.comerciosService.nuevoComercio(this.formularioComercio.value).subscribe(
       res=>{
         console.log(res);
+        console.log(res[0]._id);
+        // añadir el comercio a su categoria
+        this.categoriasService.agregarComercio(this.categoria,res[0]._id).subscribe(
+          resp=>{
+            console.log(resp);
+          }
+        );
       }
-    );
+    )
   }
 }

@@ -12,4 +12,8 @@ export class CategoriasService {
   obtenerCategorias():Observable<any>{
     return this.httpClient.get('http://localhost:8888/categorias/',{});
   } 
+
+  agregarComercio(NombreCategoria:any, idComercio:any):Observable<any>{
+    return this.httpClient.post(`http://localhost:8888/categorias/${NombreCategoria}/agregarComercio/${idComercio}`,{});
+  };
 }
