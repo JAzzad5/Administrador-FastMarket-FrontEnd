@@ -3,8 +3,9 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faUser} from '@fortawesome/free-regular-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+declare const Swal: any;
 @Component({
   selector: 'app-contenedor-comercios',
   templateUrl: './contenedor-comercios.component.html',
@@ -15,6 +16,8 @@ export class ContenedorComerciosComponent implements OnInit {
 @Output() onCargarProductos = new EventEmitter();
   Categorias:any = [];
   faPlus=faPlus;
+  faEdit =faEdit;
+  faTrashAlt=faTrashAlt;
   categoria:any;
 
   formularioComercio = new FormGroup({
@@ -42,15 +45,7 @@ export class ContenedorComerciosComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.categoriasService.obtenerCategorias().subscribe(
-      res=>{
-        this.Categorias = res;
-        console.log("Categorias: ", this.Categorias);
-      },
-      error=>{
-        console.log(error)
-      }
-    );
+    this.cargarComercios();
 
 
   }
@@ -94,9 +89,44 @@ export class ContenedorComerciosComponent implements OnInit {
         this.categoriasService.agregarComercio(this.categoria,res[0]._id).subscribe(
           resp=>{
             console.log(resp);
+            this.cargarComercios();
+            this.sweet();
           }
         );
       }
     )
+  }
+
+  cargarComercios(){
+    this.categoriasService.obtenerCategorias().subscribe(
+      res=>{
+        this.Categorias = res;
+        console.log("Categorias: ", this.Categorias);
+      },
+      error=>{
+        console.log(error)
+      }
+    );
+  }
+
+  sweet(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: `Comercio agregado`,
+      showConfirmButton: false,
+      timer: 1500,
+    });
+  }
+
+  modalEditar(modal:any, idComercio:any){
+    console.log(idComercio);
+    this.modalService.open(
+      modal,
+      {
+        size:'xs',
+        centered:true
+      }
+    );
   }
 }

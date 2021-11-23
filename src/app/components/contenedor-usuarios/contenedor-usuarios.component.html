@@ -22,8 +22,36 @@
             <td>{{usuario.Telefono}}</td>
             <td>{{usuario.Ubicacion.NombreUbicacion}}</td>
             <td style="text-align: center;">{{usuario.HistorialOrdenes.length}}</td>
-            <td> <p class="estado-a">{{usuario.Estado}}</p></td>
-            <td> <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+            <td> <p [ngClass]="{'estado-a': usuario.Estado == 'Activo', 'estado-i': usuario.Estado == 'Inactivo'}">{{usuario.Estado}}</p></td>
+            <td> <fa-icon (click)="modalEditar(Usuario, usuario._id)"  class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
     </tbody>
 </table>
+
+
+
+<!-- Ventana modal de editar usuario -->
+<ng-template #Usuario let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Datos del Usuario</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body" >
+        <form [formGroup]="formularioUsuario">
+            Nombre Usuario: <input class="form-control" formControlName="NombreUsuario" type="text" placeholder="Nombre Usuario" required><br>
+            Correo: <input class="form-control" formControlName="Correo" type="text" placeholder="Correo del Usuario"><br>
+            Contraseña: <input class="form-control" formControlName="Contraseña" type="password" placeholder="Contraseña del Usuario"><br>
+            Telefono: <input class="form-control" formControlName="Telefono" type="text" placeholder="Telefono +504 (1234-56789)"><br>
+            Estado: <select class="form-control" formControlName="Estado" id="">
+                        <option [selected]="EstadoUsuario == 'Activo'" value="Activo">Activo</option>
+                        <option [selected]="EstadoUsuario == 'Inactivo'" value="Inactivo">Inactivo</option>
+                    </select>
+            
+        </form>
+    </div>
+    <div class="modal-footer container ">
+        <button [disabled]="!formularioUsuario.valid" type="button" type="button" class="btn btn-success col-12" (click)=" editarUsuario(); modal.close('Save click');">Editar Usuario </button>
+    </div>
+</ng-template>

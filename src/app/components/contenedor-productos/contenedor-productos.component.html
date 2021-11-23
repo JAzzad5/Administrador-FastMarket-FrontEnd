@@ -27,7 +27,7 @@
             <th scope="row"> <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/productos/{{producto.ImagenProducto}}" alt=""> </th>
             <td>{{producto.NombreProducto}}</td>
             <td>{{producto.Descripcion}}</td>
-            <td>{{producto.Precio}}</td>
+            <td>L. {{producto.Precio}}</td>
             <td> <p class="estado-a">Activo </p></td>
         </tr>
     </tbody>
@@ -54,6 +54,6 @@
         </form>
     </div>
     <div class="modal-footer container ">
-        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="modal.close('Save click');">Agregar Comercio </button>
+        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="agregarProducto(); modal.close('Save click');">Agregar Comercio </button>
     </div>
 </ng-template>

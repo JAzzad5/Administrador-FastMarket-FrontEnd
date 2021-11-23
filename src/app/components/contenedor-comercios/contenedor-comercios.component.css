@@ -55,3 +55,17 @@ table td{
     height: fit-content;
     padding-bottom: 10px;
 }
+
+.iconos{
+    font-size: 22px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.edit{
+    color: #28a745;
+}
+
+.delete{
+    color: #dc3545;
+}

@@ -28,6 +28,20 @@ table td{
     border-radius: 5px;
 }
 
+.estado-i{
+    width: fit-content;
+    height: 35px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin:0px;
+}
+
 p.estado-a {
     margin-right: 0px;
     margin-bottom: 0px;

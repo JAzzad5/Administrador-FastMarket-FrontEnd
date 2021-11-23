@@ -12,4 +12,8 @@ export class ProductosService {
   obteneProductos(idComercio:any):Observable<any>{
     return this.httpClient.get(`http://localhost:8888/comercios/${idComercio}/productos`,{});
   }
+
+  nuevoProducto(idComercio:any, formularioProducto:any):Observable<any>{
+    return this.httpClient.post(`http://localhost:8888/productos/${idComercio}/nuevo`,formularioProducto);
+  }
 }
