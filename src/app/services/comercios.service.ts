@@ -26,4 +26,8 @@ export class ComerciosService {
   agregarProductoAComercio(idComercio:any, idProducto:any):Observable<any>{
     return this.httpClient.post(`http://localhost:8888/comercios/${idComercio}/agregarProducto/${idProducto}`,{});
   }
+
+  editarComercio(idComercio:any, formulario:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/comercios/${idComercio}/editar`,formulario);
+  }
 }

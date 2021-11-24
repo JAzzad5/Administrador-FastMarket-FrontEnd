@@ -119,14 +119,4 @@ export class ContenedorComerciosComponent implements OnInit {
     });
   }
 
-  modalEditar(modal:any, idComercio:any){
-    console.log(idComercio);
-    this.modalService.open(
-      modal,
-      {
-        size:'xs',
-        centered:true
-      }
-    );
-  }
 }

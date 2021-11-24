@@ -61,11 +61,24 @@ table td{
 }
 
 .agg-producto{
-    margin-right: 30px;
+    margin-right: 10px;
     width: fit-content;
     height: fit-content;
     padding: 10px;
     background-color: #28a745;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.edit-perfil{
+    margin-right: -80px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: #ffc107;
     color: white;
     text-align: center;
     border-radius: 10px;
