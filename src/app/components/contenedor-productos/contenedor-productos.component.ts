@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { ProductosService } from 'src/app/services/productos.service';
-import { faArrowLeft, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faPlus, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 declare const Swal: any;
@@ -17,13 +17,22 @@ export class ContenedorProductosComponent implements OnInit {
 @Output() onVerComercios = new EventEmitter();
 Productos:any = [];
 Comercio:any =[];
+Producto:any =[];
 faArrowLeft=faArrowLeft;
 faPlus=faPlus;
 faEdit=faEdit;
+faTrashAlt=faTrashAlt;
 
 formularioProducto = new FormGroup({
   NombreProducto:new FormControl('', [Validators.required, Validators.maxLength(20)]),
   ImagenProducto:new FormControl('', [Validators.required]),
+  Descripcion :new FormControl('', [Validators.required, Validators.maxLength(50) ]),
+  Precio:new FormControl('', [Validators.required,  Validators.min(10)]),
+});
+
+formularioEditarProducto = new FormGroup({
+  NombreProducto:new FormControl('', [Validators.required, Validators.maxLength(20)]),
+  ImagenProducto:new FormControl(''),
   Descripcion :new FormControl('', [Validators.required, Validators.maxLength(50) ]),
   Precio:new FormControl('', [Validators.required,  Validators.min(10)]),
 });
@@ -136,7 +145,7 @@ editar(){
   this.comerciosService.editarComercio(this.idComercio, this.formularioComercio.value).subscribe(
     res=>{
       console.log(res);
-      this.edicionCorrecta();
+      this.edicionCorrecta('Comercio Editado con éxito');
       this.cargarComercio();
     }
   );
@@ -153,11 +162,11 @@ sweet(){
   });
 }
 
-edicionCorrecta(){
+edicionCorrecta(msj:any){
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: `Edición Exitosa`,
+      title: msj,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -189,6 +198,44 @@ cargarComercio(){
     },
     error=>{
       console.log(error);
+    }
+  );
+}
+
+modalEditar(modal:any, Producto:any){
+  console.log(Producto);
+  this.cargarDatosModalProducto(Producto);
+  this.modalService.open(
+    modal,
+    {
+      size:'xs',
+      centered:true
+    }
+  );
+}
+
+cargarDatosModalProducto(producto:any){
+  console.log(producto)
+  this.Producto = producto;
+  this.formularioEditarProducto.setValue({
+    NombreProducto: producto.NombreProducto,
+    ImagenProducto:'',
+    Descripcion : producto.Descripcion ,
+    Precio: producto.Precio
+  });
+};
+
+editarProducto(){
+  const NombreImagen = this.formularioEditarProducto.value.ImagenProducto.split("\\");
+  this.formularioEditarProducto.value.ImagenProducto = NombreImagen[NombreImagen.length - 1];
+  if (this.formularioEditarProducto.value.ImagenProducto == ""){
+    this.formularioEditarProducto.value.ImagenProducto = this.Producto.ImagenProducto;
+  }
+  this.productosService.editarProducto(this.Producto._id, this.formularioEditarProducto.value).subscribe(
+    res=>{
+      console.log(res);
+      this.cargarProductos();
+      this.edicionCorrecta('Producto Editado con éxito')
     }
   );
 }

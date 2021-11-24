@@ -16,4 +16,8 @@ export class ProductosService {
   nuevoProducto(idComercio:any, formularioProducto:any):Observable<any>{
     return this.httpClient.post(`http://localhost:8888/productos/${idComercio}/nuevo`,formularioProducto);
   }
+
+  editarProducto(idProducto:any, formulario:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/productos/${idProducto}/editar`,formulario);
+  }
 }

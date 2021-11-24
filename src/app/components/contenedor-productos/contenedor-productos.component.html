@@ -23,6 +23,7 @@
             <th scope="col">Descripcion</th>
             <th scope="col">Precio</th>
             <th scope="col">Estado</th>
+            <th scope="col">Opciones</th>
         </tr>
     </thead>
     <tbody>
@@ -32,6 +33,7 @@
             <td>{{producto.Descripcion}}</td>
             <td>L. {{producto.Precio}}</td>
             <td> <p class="estado-a">Activo </p></td>
+            <td> <fa-icon (click)="modalEditar(EditProducto, producto)"  class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
     </tbody>
 </table>
@@ -57,7 +59,7 @@
         </form>
     </div>
     <div class="modal-footer container ">
-        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="agregarProducto(); modal.close('Save click');">Agregar Comercio </button>
+        <button [disabled]="!formularioProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="agregarProducto(); modal.close('Save click');">Agregar Producto </button>
     </div>
 </ng-template>
 
@@ -66,7 +68,7 @@
 <!-- Ventana modal de editar usuario -->
 <ng-template #EditComercio let-modal>
     <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Datos del Usuario</h4>
+    <h4 class="modal-title" id="modal-basic-title">Datos del Comercio</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -84,6 +86,29 @@
         </form>
     </div>
     <div class="modal-footer container ">
-        <button [disabled]="!formularioComercio.valid" type="button" type="button" class="btn btn-success col-12" (click)="editar(); modal.close('Save click');">Editar Usuario </button>
+        <button [disabled]="!formularioComercio.valid" type="button" type="button" class="btn btn-success col-12" (click)="editar(); modal.close('Save click');">Editar Comercio </button>
+    </div>
+</ng-template>
+
+
+<!-- Ventana modal de agg prodcuto -->
+<ng-template #EditProducto let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Datos del Producto</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body" >
+        <form [formGroup]="formularioEditarProducto">
+            Nombre Producto: <input class="form-control" formControlName="NombreProducto" type="text" placeholder="Nombre Producto" required><br>
+            Imagen Producto: <input class="form-control" formControlName="ImagenProducto" type="file" placeholder="Imagen Producto"><br>
+            Descripcion: <input class="form-control" formControlName="Descripcion" type="text" placeholder="Descripcion del Producto"><br>
+            Precio: <input min="10" class="form-control" formControlName="Precio" type="number" placeholder="Precio (mayor que L. 10)"><br>
+            
+        </form>
+    </div>
+    <div class="modal-footer container ">
+        <button [disabled]="!formularioEditarProducto.valid" type="button" type="button" class="btn btn-success col-12" (click)="editarProducto(); modal.close('Save click');">Editar Producto </button>
     </div>
 </ng-template>

@@ -19,6 +19,20 @@ table td{
     padding-left: 10px;
     padding-right: 10px;
     border-radius: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.estado-i{
+    width: fit-content;
+    padding: 2px;
+    background-color: #dc3545;
+    color: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    margin-right: 0px;
+    margin-bottom: 0px;
 }
 
 .comercios:hover{
@@ -84,4 +98,18 @@ table td{
     border-radius: 10px;
     font-size: 17px;
     cursor: pointer;
+}
+
+.iconos{
+    font-size: 22px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.edit{
+    color: #28a745;
+}
+
+.delete{
+    color: #dc3545;
 }
