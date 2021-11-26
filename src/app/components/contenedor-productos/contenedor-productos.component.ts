@@ -2,8 +2,8 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { ComerciosService } from 'src/app/services/comercios.service';
 import { ProductosService } from 'src/app/services/productos.service';
 import { faArrowLeft, faPlus, faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 declare const Swal: any;
 
 @Component({
