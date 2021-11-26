@@ -14,9 +14,9 @@
     <tbody>
         <tr class="orden" *ngFor="let orden of ordenes" (click)="abrirOrden(Orden, orden._id)" >
             <th *ngIf=" orden.estado == 'Pendiente' " scope="row">
-                <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{orden.productos[0]._id[0].Comercio[0].ImagenComercio}}" alt="">
+                <img class="rounded rounded-circle mx-auto d-block" style="object-fit: cover; height: 50px; width: 50px; " src="../../../assets/images/{{orden.productos[0]._id.Comercio[0].ImagenComercio}}" alt="">
             </th>
-            <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.usuario[0].NombreUsuario}}</td>
+            <td *ngIf=" orden.estado == 'Pendiente' " >{{orden.usuario.NombreUsuario}}</td>
             
             <td *ngIf="orden.motorista == null" [ngClass]="{'noTomada': orden.motorista == null}">Orden No Tomada.</td>
             <td *ngIf=" orden.estado == 'Pendiente' && orden.motorista != null" >{{orden.motorista[0].Nombre}}</td>
@@ -55,13 +55,13 @@
             </div>
             <div class="titulo-orden"> Productos de la Orden: </div>
             <div class="producto shadow" *ngFor="let producto of OrdenPendiente[0].productos">
-                <img class="img-producto" src="../../../assets/images/productos/{{producto._id[0].ImagenProducto}}" alt="Restaurantes">
+                <img class="img-producto" src="../../../assets/images/productos/{{producto._id.ImagenProducto}}" alt="Restaurantes">
                 <div class="datos-producto">
-                    <div class="comercio"> {{producto._id[0].Comercio[0].NombreComercio}}</div>
+                    <div class="comercio"> {{producto._id.Comercio[0].NombreComercio}}</div>
                     <div class="sub-contenedor">
                         <div class="cantidad rounded rounded-circle" >{{producto.cantidad}}</div>
-                        <div class="nombre-producto"> {{producto._id[0].NombreProducto}}</div>
-                        <div class="precio"> L. {{producto._id[0].Precio}}</div>
+                        <div class="nombre-producto"> {{producto._id.NombreProducto}}</div>
+                        <div class="precio"> L. {{producto._id.Precio}}</div>
                     </div>
                     
                 </div>
