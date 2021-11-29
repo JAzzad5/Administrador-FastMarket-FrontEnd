@@ -4,6 +4,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt, faEdit, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
+import { MotoristasService } from 'src/app/services/motoristas.service';
 declare const L: any;
 
 @Component({
@@ -21,89 +22,62 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
   marker:any ="";
   lat:any;
   lon:any;
-  constructor(private modalService:NgbModal, private ordenesService: OrdenesService) { }
+  constructor(private modalService:NgbModal, private motoristasService:MotoristasService ,private ordenesService: OrdenesService) { }
+  motoristas:any;
+  motoristasDisp:any = [];
   ordenes:any;
   OrdenPendiente:any = [];
   subtotal:any=0;
+
   ngOnInit(): void {
-    this.ordenesService.obtenerOrdenes().subscribe(
-      res=>{
-        console.log(res);
-        this.ordenes = res;
-      },
-      error=>{
-        console.log(error);
+    
+    this.cargarMotoristas();
+    this.cargarOrdenes();
+    setTimeout(()=> this.disponibles(), 2000); ;
+  }
+
+
+  motoristasDisponibles(modal:any, idOrden:any){
+
+    this.modalService.open(
+      modal,
+      {
+        size:'xs',
+        centered:true
       }
     );
   }
 
-  abrirOrden(modal:any, idOrden:any){
-    this.ordenesService.obtenerOrdenId(idOrden).subscribe(
-      res=>{
-        this.OrdenPendiente = res;
-        console.log(this.OrdenPendiente[0]);
-        this.lat = this.OrdenPendiente[0].usuario[0].Ubicacion.lat; 
-        this.lon = this.OrdenPendiente[0].usuario[0].Ubicacion.lon;
-        this.totalOrden();
+onChange(deviceValue:any) {
+  console.log(deviceValue.value);
+}
+cargarOrdenes(){
+  this.ordenesService.obtenerOrdenes().subscribe(
+    res=>{
+      console.log(res);
+      this.ordenes = res;
+    },
+    error=>{
+      console.log(error);
+    }
+    );
+}
 
-        this.modalService.open(
-          modal,
-          {
-            size:'xs',
-            centered:true
-          }
-        );
-        this.verMapa();
-        this.trazarRuta(this.OrdenPendiente[0].productos[0]._id[0].Comercio[0].Ubicacion.lat, this.OrdenPendiente[0].productos[0]._id[0].Comercio[0].Ubicacion.lon)
-      },
-      error=>{
-        console.log(error);
-      }
-    )
+cargarMotoristas(){
+  this.motoristasService.obtenerMotoristas().subscribe(
+    res=>{
+      console.log(res);
+      this.motoristas = res;
+    }
+  );
+}
 
-  }
-
-  totalOrden(){
-    this.subtotal=0;
-    let productos = this.OrdenPendiente[0].productos;
-    productos.forEach((producto:any) => {
-      this.subtotal += producto.cantidad * producto._id[0].Precio;
-      
-      console.log(this.subtotal);
-    });
-  }
-
-  verMapa(){
-
-        this.mymap = L.map('mapa').setView([this.lat, this.lon], this.zoom);
-          L.tileLayer(`https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=${environment.leafletToken}`, {
-          maxZoom: 18,
-          id: 'mapbox/streets-v11',
-          tileSize: 512,
-          zoomOffset: -1,
-          accessToken: environment.leafletToken
-        }).addTo(this.mymap);
-
-        this.aggMarcador(this.lat, this.lon);
-  }
-
-  
-  aggMarcador(lat:any, long:any){
-    this.marker = L.marker([lat,long]).addTo(this.mymap);
-    this.marker.bindPopup("<b>Ubicación Usuario </b>").openPopup();
-    this.lat = lat;
-    this.lon = long;
-  }
-
-  trazarRuta(latComercio:any, lonComercio:any){
-    L.Routing.control({
-      waypoints: [
-        L.latLng(this.lat, this.lon),
-        L.latLng(latComercio, lonComercio)
-      ],
-      lineOptions: {
-        styles: [{color: '#688E26', opacity: 0.7, weight: 4}]
-      }
-    }).addTo(this.mymap);
-  }
+disponibles(){
+  this.motoristas.forEach((element:any) => {
+    if (element.Observacion == 'Disponible'){
+      this.motoristasDisp.push(element);
+    }
+  });
+  console.log(this.motoristasDisp);
+}
 }

@@ -8,7 +8,13 @@ import { Observable } from 'rxjs';
 export class MotoristasService {
 
   constructor(private httpClient:HttpClient) { }
+
   obtenerMotoristas():Observable<any>{
     return this.httpClient.get(`http://localhost:8888/motoristas`,{});
   }
+
+  aprobarMotoristas(idMotorista:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/Aprobar`,{});
+  }
+
 }

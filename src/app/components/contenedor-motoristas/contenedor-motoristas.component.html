@@ -51,6 +51,6 @@
             <td *ngIf="motorista.Aprobado == false">{{motorista.Telefono}}</td>
             <td *ngIf="motorista.Aprobado == false"> <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
             <td *ngIf="motorista.Aprobado == false"> <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
-            <td *ngIf="motorista.Aprobado == false"> <fa-icon class="iconos edit" [icon]="faCheck"></fa-icon><fa-icon class="iconos delete" [icon]="faTimes"></fa-icon></td>        </tr>
+            <td *ngIf="motorista.Aprobado == false"> <fa-icon (click)="aprobarmoto(motorista._id)" class="iconos edit" [icon]="faCheck"></fa-icon><fa-icon class="iconos delete" [icon]="faTimes"></fa-icon></td>        </tr>
     </tbody>
 </table>
