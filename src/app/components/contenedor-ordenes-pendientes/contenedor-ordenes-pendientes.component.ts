@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from 'src/environments/environment';
 import { MotoristasService } from 'src/app/services/motoristas.service';
 declare const L: any;
+declare const Swal: any;
 
 @Component({
   selector: 'app-contenedor-ordenes-pendientes',
@@ -28,17 +29,17 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
   ordenes:any;
   OrdenPendiente:any = [];
   subtotal:any=0;
+  ordenseleccionada:any;
 
   ngOnInit(): void {
     
     this.cargarMotoristas();
     this.cargarOrdenes();
-    setTimeout(()=> this.disponibles(), 2000); ;
   }
 
 
   motoristasDisponibles(modal:any, idOrden:any){
-
+    this.ordenseleccionada = idOrden;
     this.modalService.open(
       modal,
       {
@@ -50,6 +51,30 @@ export class ContenedorOrdenesPendientesComponent implements OnInit {
 
 onChange(deviceValue:any) {
   console.log(deviceValue.value);
+  Swal.fire({
+    title: 'Desea asignar este motorista?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, Asignar'
+  }).then((result:any) => {
+    console.log(this.ordenseleccionada);
+    this.ordenesService.asignarOrden(this.ordenseleccionada,deviceValue.value).subscribe(
+      res=>{
+        console.log(res);
+        this.motoristasService.cambiarObservacion(deviceValue.value,'Con Orden').subscribe(
+          res=>{
+            console.log(res);
+            this.asignado();
+            this.cargarOrdenes();
+            this.cargarMotoristas();
+          }
+        );
+      }
+    );
+  })
+  
 }
 cargarOrdenes(){
   this.ordenesService.obtenerOrdenes().subscribe(
@@ -68,6 +93,8 @@ cargarMotoristas(){
     res=>{
       console.log(res);
       this.motoristas = res;
+      this.motoristasDisp = [];
+      this.disponibles();
     }
   );
 }
@@ -80,4 +107,15 @@ disponibles(){
   });
   console.log(this.motoristasDisp);
 }
+
+asignado(){
+    Swal.fire({
+      position: 'center',
+      icon: 'success',
+      title: 'Motorista asignado',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+}
+
 }

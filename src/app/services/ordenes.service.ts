@@ -20,4 +20,9 @@ export class OrdenesService {
   obtenerOrdenId(Id:any):Observable<any>{
     return this.httpClient.get(`http://localhost:8888/ordenes/${Id}`,{});
   };
+
+  
+  asignarOrden(idOrden:any,idMotorista:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/ordenes/${idOrden}/${idMotorista}/tomarOrden`,{});
+  };
 }

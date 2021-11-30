@@ -44,7 +44,7 @@
             Correo: <input class="form-control" formControlName="Correo" type="text" placeholder="Correo del Usuario"><br>
             Contraseña: <input class="form-control" formControlName="Contraseña" type="password" placeholder="Contraseña del Usuario"><br>
             Telefono: <input class="form-control" formControlName="Telefono" type="text" placeholder="Telefono +504 (1234-56789)"><br>
-            Estado: <select class="form-control" formControlName="Estado" id="">
+            Estado: <select class="form-select" formControlName="Estado" id="">
                         <option [selected]="EstadoUsuario == 'Activo'" value="Activo">Activo</option>
                         <option [selected]="EstadoUsuario == 'Inactivo'" value="Inactivo">Inactivo</option>
                     </select>

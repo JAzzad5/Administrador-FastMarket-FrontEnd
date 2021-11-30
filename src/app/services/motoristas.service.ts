@@ -11,10 +11,22 @@ export class MotoristasService {
 
   obtenerMotoristas():Observable<any>{
     return this.httpClient.get(`http://localhost:8888/motoristas`,{});
-  }
+  };
+
+  obtenerUnMotorista(idMotorista:any):Observable<any>{
+    return this.httpClient.get(`http://localhost:8888/motoristas/${idMotorista}`,{});
+  };
 
   aprobarMotoristas(idMotorista:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/Aprobar`,{});
-  }
+  };
 
+  
+  cambiarObservacion(idMotorista:any,Observacion:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/${Observacion}/cambiarObservacion`,{});
+  };
+
+  editarMotoristas(idMotorista:any, formulario:any):Observable<any>{
+    return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/Editar`,formulario);
+  };
 }

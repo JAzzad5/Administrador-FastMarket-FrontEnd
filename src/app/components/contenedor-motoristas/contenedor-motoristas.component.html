@@ -23,7 +23,7 @@
             <td *ngIf="motorista.Aprobado != false"  style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
             <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
             <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
-            <td *ngIf="motorista.Aprobado != false" > <fa-icon class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
+            <td *ngIf="motorista.Aprobado != false" > <fa-icon (click)="modalEditar(Motorista, motorista._id)" class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>
         </tr>
     </tbody>
 </table>
@@ -54,3 +54,31 @@
             <td *ngIf="motorista.Aprobado == false"> <fa-icon (click)="aprobarmoto(motorista._id)" class="iconos edit" [icon]="faCheck"></fa-icon><fa-icon class="iconos delete" [icon]="faTimes"></fa-icon></td>        </tr>
     </tbody>
 </table>
+
+
+<!-- Ventana modal de editar motoristas -->
+<ng-template #Motorista let-modal>
+    <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Datos del Motorista</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body" >
+        <form [formGroup]="formularioMotorista">
+            Nombre: <input class="form-control" formControlName="Nombre" type="text" placeholder="Nombre Motorista" required><br>
+            Placa: <input class="form-control" formControlName="Placa" type="text" placeholder="Placa Motorista" required><br>
+            Imagen Motorista: <input class="form-control" formControlName="ImagenMotorista" type="file" placeholder="Imagen Motorista"><br>
+            Correo: <input class="form-control" formControlName="Correo" type="email" placeholder="Correo "><br>
+            Contraseña: <input class="form-control" formControlName="Contraseña" type="password" placeholder="Contraseña"><br>
+            Telefono: <input class="form-control" formControlName="Telefono" type="text" placeholder="+504 (Telefono)"><br>
+            Estado: <select class="form-select" formControlName="Estado" id="">
+                <option class="form-control" [selected]="EstadoMotorista == 'Activo'" value="Activo">Activo</option>
+                <option class="form-control" [selected]="EstadoMotorista == 'Inactivo'" value="Inactivo">Inactivo</option>
+            </select>
+        </form>
+    </div>
+    <div class="modal-footer container ">
+        <button [disabled]="!formularioMotorista.valid" type="button" type="button" class="btn btn-success col-12" (click)=" editarMotorista(); modal.close('Save click');">Editar Motorista </button>
+    </div>
+</ng-template>
