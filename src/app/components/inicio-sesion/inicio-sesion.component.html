@@ -8,16 +8,16 @@
 
             <img class="img-login" src="../../../assets/images/login undraw.svg" alt="">
         
-            <form class="formulario" action="">
+            <form [formGroup]="formularioLogin" class="formulario">
                 <div class="correo">
-                    <p class="form-label">Correo:</p>
-                    <input class="form-control" placeholder="usuario@correo.com" type="email" name="" id="">
+                    <p class="form-label">Usuario:</p>
+                    <input  formControlName="Usuario" class="form-control" placeholder="Usuario" type="email">
                 </div>
                 <div class="contraseña">
                     <p class="form-label" >Contraseña:</p>
-                    <input class="form-control" placeholder="contraseña" type="password" name="" id="">
+                    <input  formControlName="Contraseña" class="form-control" placeholder="contraseña" type="password">
                 </div>
-                <button [routerLink]="['/dashboard']" routerLinkActive="router-link-active"  type="button" class="btn btn-success"> Iniciar Session </button>
+                <button [disabled]="!formularioLogin.valid" (click)="iniciarSesion()"  type="button" class="btn btn-success"> Iniciar Session </button>
                 
             </form>
         </div>
