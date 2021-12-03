@@ -29,6 +29,9 @@ export class ContenedorComerciosComponent implements OnInit {
     CostoEnvio:new FormControl('', [Validators.required,  Validators.min(25), Validators.max(100)]),
     HoraInicio:new FormControl('', [Validators.required]),
     HoraFinal:new FormControl('', [Validators.required]),
+    NombreUbicacion:new FormControl('', [Validators.required]),
+    lat:new FormControl('', [Validators.required]),
+    lon:new FormControl('', [Validators.required]),
   });
 
   get NombreComercio(){

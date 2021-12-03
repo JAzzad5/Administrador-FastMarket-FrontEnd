@@ -86,11 +86,11 @@ formularioMotorista = new FormGroup({
     });
   }
 
-  editado(){
+  eliminado(){
     Swal.fire({
       position: 'center',
       icon: 'success',
-      title: `Motorista Editado`,
+      title: `Motorista Eliminado`,
       showConfirmButton: false,
       timer: 1500,
     });
@@ -144,5 +144,25 @@ formularioMotorista = new FormGroup({
         this.cargarMotoristas();
       }
     );
+  }
+
+  EliminarMotorista(id:any){
+    Swal.fire({
+      title: 'Desea eliminar el motorista?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, Eliminar'
+    }).then((result:any) => {
+        this.motoristasService.eliminarMotorista(id).subscribe(
+          res=>{
+            console.log(res);
+            this.eliminado();
+            this.cargarMotoristas();
+          }
+        );
+      
+    })
   }
 }

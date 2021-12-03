@@ -29,4 +29,8 @@ export class MotoristasService {
   editarMotoristas(idMotorista:any, formulario:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/motoristas/${idMotorista}/Editar`,formulario);
   };
+
+  eliminarMotorista(idMotorista:any):Observable<any>{
+    return this.httpClient.delete(`http://localhost:8888/motoristas/${idMotorista}/eliminar`,{});
+  };
 }
