@@ -46,6 +46,9 @@ formularioComercio = new FormGroup({
   CostoEnvio:new FormControl('', [Validators.required,  Validators.min(25), Validators.max(100)]),
   HoraInicio:new FormControl('', [Validators.required]),
   HoraFinal:new FormControl('', [Validators.required]),
+  NombreUbicacion:new FormControl('', [Validators.required]),
+    lat:new FormControl('', [Validators.required]),
+    lon:new FormControl('', [Validators.required]),
 });
 
 get NombreComercio(){
@@ -186,6 +189,9 @@ cargarDatosModal(comercio:any){
     CostoEnvio: comercio.CostoEnvio,
     HoraInicio: HI,
     HoraFinal: HF,
+    NombreUbicacion: comercio.Ubicacion.NombreUbicacion,
+    lat: comercio.Ubicacion.lat,
+    lon: comercio.Ubicacion.lon
   });
   
 };
@@ -240,4 +246,66 @@ editarProducto(){
   );
 }
 
+eliminarProducto(id:any){
+  Swal.fire({
+    title: 'Desea eliminar el producto?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, Eliminar'
+  }).then((result:any) => {
+      this.productosService.eliminarProducto(id).subscribe(
+        res=>{
+          console.log(res);
+          this.eliminado();
+          this.cargarProductos();
+        }
+      );
+    
+  })
+}
+
+eliminarComercio(id:any){
+  console.log(id);
+  Swal.fire({
+    title: 'Desea eliminar el comercio?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, Eliminar'
+  }).then((result:any) => {
+    this.comerciosService.eliminarComercio(id).subscribe(
+      res=>{
+        console.log(res);
+        this.ComercioEliminado();
+        this.cargarComercio();
+        window.location.href = '/dashboard';
+      }
+    );
+    
+  })
+
+}
+
+eliminado(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: `Producto Eliminado`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
+
+ComercioEliminado(){
+  Swal.fire({
+    position: 'center',
+    icon: 'success',
+    title: `Comercio Eliminado`,
+    showConfirmButton: false,
+    timer: 1500,
+  });
+}
 }

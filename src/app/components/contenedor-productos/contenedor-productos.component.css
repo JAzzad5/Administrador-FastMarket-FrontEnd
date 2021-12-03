@@ -88,11 +88,24 @@ table td{
 }
 
 .edit-perfil{
-    margin-right: -80px;
+    margin-right: -100px;
     width: fit-content;
     height: fit-content;
     padding: 10px;
     background-color: #ffc107;
+    color: white;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.eliminar-perfil{
+    margin-left: -110px;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    background-color: #dc3545;
     color: white;
     text-align: center;
     border-radius: 10px;

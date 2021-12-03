@@ -30,4 +30,8 @@ export class ComerciosService {
   editarComercio(idComercio:any, formulario:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/comercios/${idComercio}/editar`,formulario);
   }
+
+  eliminarComercio(idComercio:any):Observable<any>{
+    return this.httpClient.delete(`http://localhost:8888/comercios/${idComercio}/eliminar`,{});
+  };
 }

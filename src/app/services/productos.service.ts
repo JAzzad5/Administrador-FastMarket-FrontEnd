@@ -20,4 +20,8 @@ export class ProductosService {
   editarProducto(idProducto:any, formulario:any):Observable<any>{
     return this.httpClient.put(`http://localhost:8888/productos/${idProducto}/editar`,formulario);
   }
+
+  eliminarProducto(idProducto:any):Observable<any>{
+    return this.httpClient.delete(`http://localhost:8888/productos/${idProducto}/eliminar`,{});
+  };
 }
