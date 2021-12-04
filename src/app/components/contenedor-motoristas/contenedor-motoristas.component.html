@@ -6,7 +6,7 @@
             <th scope="col">Nombre Motoristas</th>
             <th scope="col">Correo Electrónico</th>
             <th scope="col">Telefono</th>
-            <th style="width: 115px;" scope="col">Historial de Ordenes</th>
+            <th style="width: 115px;" scope="col">N. Placa</th>
             <th scope="col">Observacion</th>
             <th scope="col">Estado</th>
             <th scope="col">Opciones</th>
@@ -20,7 +20,7 @@
             <td *ngIf="motorista.Aprobado != false" >{{motorista.Nombre}}</td>
             <td *ngIf="motorista.Aprobado != false" >{{motorista.Correo}}</td>
             <td *ngIf="motorista.Aprobado != false" >{{motorista.Telefono}}</td>
-            <td *ngIf="motorista.Aprobado != false"  style="text-align: center;" >{{motorista.HistorialOrdenes.length}}</td>
+            <td *ngIf="motorista.Aprobado != false"  style="text-align: center;" >{{motorista.Placa}}</td>
             <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Observacion == 'Disponible', 'estado-i': motorista.Observacion == 'No Disponible', 'estado-co':  motorista.Observacion=='Con Orden'}">{{motorista.Observacion}}</p></td>
             <td *ngIf="motorista.Aprobado != false" > <p [ngClass]="{'estado-a': motorista.Estado == 'Activo', 'estado-i': motorista.Estado == 'Inactivo'}">{{motorista.Estado}}</p></td>
             <td *ngIf="motorista.Aprobado != false" > <fa-icon (click)="modalEditar(Motorista, motorista._id)" class="iconos edit" [icon]="faEdit"></fa-icon><fa-icon class="iconos delete" [icon]="faTrashAlt"></fa-icon></td>

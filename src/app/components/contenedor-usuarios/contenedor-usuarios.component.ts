@@ -30,7 +30,7 @@ export class ContenedorUsuariosComponent implements OnInit {
     Correo:new FormControl('', [Validators.required]),
     Telefono:new FormControl('', [Validators.required]),
     Contraseña:new FormControl('', [Validators.required]),
-    Estado:new FormControl('', [Validators.required]),
+    Estado:new FormControl(''),
   });
 
   constructor(private usuariosServices:UsuariosService, private modalService:NgbModal) { }
@@ -73,6 +73,9 @@ export class ContenedorUsuariosComponent implements OnInit {
 
   editarUsuario(){
     console.log(this.formularioUsuario.value);
+    if(this.formularioUsuario.value.Estado==''){
+      this.formularioUsuario.value.Estado = this.EstadoUsuario;
+    }
     this.usuariosServices.editarUsuarios(this.usuarioEdit,this.formularioUsuario.value).subscribe(
       res=>{
         console.log(res);
