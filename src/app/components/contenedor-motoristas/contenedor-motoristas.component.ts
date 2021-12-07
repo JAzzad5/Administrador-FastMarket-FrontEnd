@@ -66,13 +66,15 @@ formularioMotorista = new FormGroup({
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, Aprobar'
     }).then((result:any) => {
-      this.motoristasService.aprobarMotoristas(id).subscribe(
-        res=>{
-          console.log(res);
-          this.aprobado();
-          this.cargarMotoristas();
-        }
-      );
+      if(result.isConfirmed){
+        this.motoristasService.aprobarMotoristas(id).subscribe(
+          res=>{
+            console.log(res);
+            this.aprobado();
+            this.cargarMotoristas();
+          }
+        );
+      }
     })
   }
 
@@ -155,13 +157,15 @@ formularioMotorista = new FormGroup({
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí, Eliminar'
     }).then((result:any) => {
-        this.motoristasService.eliminarMotorista(id).subscribe(
-          res=>{
-            console.log(res);
-            this.eliminado();
-            this.cargarMotoristas();
-          }
-        );
+        if(result.isConfirmed){
+          this.motoristasService.eliminarMotorista(id).subscribe(
+            res=>{
+              console.log(res);
+              this.eliminado();
+              this.cargarMotoristas();
+            }
+          );
+        }
       
     })
   }

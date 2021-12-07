@@ -255,6 +255,7 @@ eliminarProducto(id:any){
     cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, Eliminar'
   }).then((result:any) => {
+    if(result.isConfirmed){
       this.productosService.eliminarProducto(id).subscribe(
         res=>{
           console.log(res);
@@ -262,7 +263,7 @@ eliminarProducto(id:any){
           this.cargarProductos();
         }
       );
-    
+      }
   })
 }
 
@@ -276,15 +277,16 @@ eliminarComercio(id:any){
     cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, Eliminar'
   }).then((result:any) => {
-    this.comerciosService.eliminarComercio(id).subscribe(
-      res=>{
-        console.log(res);
-        this.ComercioEliminado();
-        this.cargarComercio();
-        window.location.href = '/dashboard';
-      }
-    );
-    
+    if(result.isConfirmed){
+      this.comerciosService.eliminarComercio(id).subscribe(
+        res=>{
+          console.log(res);
+          this.ComercioEliminado();
+          this.cargarComercio();
+          window.location.href = '/dashboard';
+        }
+      );
+    }
   })
 
 }

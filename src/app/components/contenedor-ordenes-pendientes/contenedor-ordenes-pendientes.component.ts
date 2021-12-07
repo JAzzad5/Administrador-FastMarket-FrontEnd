@@ -59,20 +59,22 @@ onChange(deviceValue:any) {
     cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, Asignar'
   }).then((result:any) => {
-    console.log(this.ordenseleccionada);
-    this.ordenesService.asignarOrden(this.ordenseleccionada,deviceValue.value).subscribe(
-      res=>{
-        console.log(res);
-        this.motoristasService.cambiarObservacion(deviceValue.value,'Con Orden').subscribe(
-          res=>{
-            console.log(res);
-            this.asignado();
-            this.cargarOrdenes();
-            this.cargarMotoristas();
-          }
-        );
-      }
-    );
+    if(result.isConfirmed){
+      console.log(this.ordenseleccionada);
+      this.ordenesService.asignarOrden(this.ordenseleccionada,deviceValue.value).subscribe(
+        res=>{
+          console.log(res);
+          this.motoristasService.cambiarObservacion(deviceValue.value,'Con Orden').subscribe(
+            res=>{
+              console.log(res);
+              this.asignado();
+              this.cargarOrdenes();
+              this.cargarMotoristas();
+            }
+          );
+        }
+      );
+    }
   })
   
 }
